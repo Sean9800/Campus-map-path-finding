@@ -1,1 +1,31 @@
-
+:root{
+  --ink:#152A33; --paper:#EFE8D8; --ochre:#C08A2E; --teal:#1E4C52;
+  --white:#FBF8F1; --line:#d8cfb6; --danger:#a8452f;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --ink:#EFE8D8; --paper:#1c2b31; --white:#233841; --line:#3a4d54; }
+}
+:root[data-theme="dark"]{ --ink:#EFE8D8; --paper:#1c2b31; --white:#233841; --line:#3a4d54; }
+*{box-sizing:border-box;}
+html,body{margin:0;font-family:system-ui,sans-serif;background:var(--paper);color:var(--ink);}
+#app{display:flex;flex-wrap:wrap;gap:14px;padding:14px;}
+h1{font-size:16px;margin:0 0 6px;}
+p.hint{font-size:13px;opacity:.75;margin:0 0 10px;}
+#canvasPane{flex:1 1 480px;min-width:280px;}
+#canvasWrap{border:1px solid var(--line);border-radius:10px;overflow:auto;max-height:72vh;background:var(--white);}
+canvas{display:block;cursor:crosshair;max-width:100%;touch-action:none;}
+#sidebar{flex:0 0 320px;min-width:260px;display:flex;flex-direction:column;gap:10px;}
+.card{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:12px;}
+button{font:inherit;padding:7px 12px;border-radius:8px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;}
+button.active{background:var(--ochre);color:#fff;border-color:var(--ochre);}
+button.primary{background:var(--teal);color:#fff;border-color:var(--teal);}
+button.danger{color:var(--danger);}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px;}
+label{font-size:13px;display:flex;gap:6px;align-items:center;}
+input[type=number]{width:64px;font:inherit;padding:4px 6px;border-radius:6px;border:1px solid var(--line);background:var(--paper);color:var(--ink);}
+#status{font-size:12.5px;min-height:1.4em;}
+textarea{width:100%;height:200px;font-family:ui-monospace,monospace;font-size:12px;border-radius:8px;border:1px solid var(--line);background:var(--paper);color:var(--ink);padding:8px;}
+textarea.small{height:70px;}

@@ -1,1 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Campus Walkable Grid Builder</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="walkable-grid-builder.css">
+</head>
+<body>
+<div id="app">
+  <div id="canvasPane">
+    <h1>Campus Walkable Grid Builder</h1>
+    <p class="hint">
+      1) Load your campus map image. 2) Pick a cell size. 3) In <b>Paint</b> mode click or drag over everywhere a person can walk (paths, courtyards, doorways). Use <b>Erase</b> to fix mistakes.
+      4) Switch to <b>Test path</b> and click a start then an end cell to check that A* routes sensibly around buildings. 5) Generate code to use in your viewer.
+    </p>
+    <div class="row">
+      <input type="file" id="fileInput" accept="image/*">
+    </div>
+    <div class="row">
+      <button id="mPaint" class="active">Paint</button>
+      <button id="mErase">Erase</button>
+      <button id="mTest">Test path</button>
+      <label>Brush <input type="number" id="brush" min="1" max="9" value="1"></label>
+      <label>Cell px <input type="number" id="cellSize" min="4" max="80" value="20"></label>
+      <label><input type="checkbox" id="showGrid" checked> Grid lines</label>
+      <label><input type="checkbox" id="diag" checked> Diagonals</label>
+    </div>
+    <div id="canvasWrap"><canvas id="canvas" width="700" height="500"></canvas></div>
+    <div id="status"></div>
+  </div>
 
+  <div id="sidebar">
+    <div class="card">
+      <div class="row" style="justify-content:space-between;">
+        <strong>Grid: <span id="info">–</span></strong>
+      </div>
+      <div class="row">
+        <button id="fillAll">Mark all walkable</button>
+        <button id="clearGrid" class="danger">Clear grid</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="row"><button id="exportBtn" class="primary">Generate code</button></div>
+      <textarea id="output" placeholder="Click 'Generate code' when your walkable area is ready." readonly></textarea>
+    </div>
+    <div class="card">
+      <strong style="font-size:13px;">Continue editing later</strong>
+      <p class="hint" style="margin:4px 0 8px;">Paste a previously generated <code>walkGrid</code> block here.</p>
+      <textarea id="importBox" class="small" placeholder="const walkGrid = {...};"></textarea>
+      <div class="row" style="margin-top:8px;"><button id="importBtn">Load grid</button></div>
+    </div>
+  </div>
+</div>
+
+<script src="walkable-grid-builder.js"></script>
+</body>
+</html>
